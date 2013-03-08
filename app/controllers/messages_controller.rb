@@ -1,12 +1,5 @@
 class MessagesController < ApplicationController
   def new
-    twiml = Twilio::TwiML::Response.new do |r|
-      r.Sms "Hey Monkey. Thanks for the message!"
-    end
-    twiml.text
-  end
-
-  def create
-       
+    Message.create content: params[:Body], phone_number: params[:From]
   end
 end
